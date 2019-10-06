@@ -1,0 +1,86 @@
+/*==========================================================
+
+ Web site: Yum Yum Cupcake Factory
+ CSS page: HW2CSS.css
+
+==========================================================*/ 
+
+/*==========================================================
+ Body
+==========================================================*/ 
+body
+{
+  background-color: PapayaWhip  ;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/*==========================================================
+ Headings
+==========================================================*/ 
+h1
+{
+  
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 36px;
+  
+  color: Crimson;
+}
+
+
+
+/*==========================================================
+ Paragraph
+==========================================================*/ 
+p
+{
+  font-size: 14px;
+}
+
+
+/*==========================================================
+ Label
+==========================================================*/ 
+   label
+{
+  font-size: 14px;
+}
+
+
+
+/*==========================================================
+ Input
+==========================================================*/ 
+
+   
+input
+{
+  background-color:PeachPuff;
+  font-size:14px;
+  padding:5px;
+  width:150px;
+}
+
+/*==========================================================
+ read-only and read-write 
+==========================================================*/ 
+
+:read-only { }
+
+/* ... so you might want to scope it */
+input:read-only, 
+textarea:read-only,
+[contenteditable]:read-only {
+  
+}
+
+/* Any enabled text input 
+   or enabled textarea 
+   or element with the contenteditable attribute */
+:read-write {
+  background: white;
+  cursor: text;
+}
+
+
+

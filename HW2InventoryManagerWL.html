@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<html>
+<!--==================================================================
+//
+// Web site: Yum Yum Cupcake Factory 
+// Web page: Inventory Manager page
+// Description:
+//   This is Inventory Manager page, which enables the staff to view the current inventory count and 
+ value for any product, and change that inventory count. It can be logged into by entering correct password from login page. 
+// 
+//=================================================================-->
+<head>
+  
+	<title>Login Administration</title>
+	<meta charset="UTF-8">
+  <meta name="author" content="[name]"/>
+  <meta name="description" content="[application title]"/>
+  <meta http-equiv="Expires" content="-1">
+  
+  <link rel="stylesheet" type="text/css" href="HW2CSS.css">
+  <link rel="icon" href="cupcake.ico">
+
+
+
+  
+</head>
+
+<body>
+
+<!-- Links to the other two pages in a menu -->
+<div class="topnav">
+  <a class="active" href="HW2main.html">Home</a>
+  <a href="HW1page2.html">Products and Services </a> &nbsp
+  <a href="HW1page3.html">Customer Rewards Enrollment </a> &nbsp
+  <a href="HW2LoginPageWL.html">Login </a>
+  
+</div>
+
+<!-- use h1 for the page title -->
+<h1>Cupcake Bakers Inventory Manager</h1>
+
+  <!-- ----------------------------------------------------------- -->
+  <!-- loadComboBox, this shows the currently selected product-->
+  <!-- ----------------------------------------------------------- -->
+
+
+<script type="text/javascript">
+"use strict";
+
+
+//Create product information Array
+
+var array = [
+    ["Select product ...",0,0],
+    ["Factory's Samoa",60,4],
+	["Winter Mint",40,2.5],
+	["Party Time",51,3.5],
+	["Lemon Lust",25,3],
+	["Lemon Coconut",25,3.5],
+	["Chocolate Lovers",20,5],
+];
+
+    //==================================================
+    // loadComboBox
+    //==================================================
+
+window.onload = function loadComboBox() {
+var myDiv = document.getElementById("myDiv");
+
+
+//Create and append select list
+var selectList = document.createElement("select");
+selectList.setAttribute("id", "mySelect");
+myDiv.appendChild(selectList);
+
+//Create and append the options
+for (var i = 0; i < array.length; i++) {
+    var option = document.createElement("option");
+    option.setAttribute("value", array[i][0]);
+    option.text = array[i][0];
+    selectList.appendChild(option);
+}
+
+
+}
+ 
+ </script>
+
+
+<div id="myDiv">Product: </div>
+
+
+<script type="text/javascript">
+"use strict";
+
+function getDetails(){
+
+ // Declare variable selected index
+
+var index = document.getElementById('mySelect').selectedIndex;
+
+// Declare variables price and count, then assign them values based on selected index and 7x3 array
+var price = array[index][2]	;
+var count = array[index][1]	;	
+document.getElementById('count').value =	array[index][1]	;
+document.getElementById('price').value =	roundNumber(array[index][2]).toFixed(2)	;
+document.getElementById('value').value =	roundNumber(price*count).toFixed(2);
+
+}
+
+
+ </script>
+
+ 
+ <!--Three readonly textboxes: Count, Price, Value  -->
+ 
+ <p><b>Count: </b>
+  <input type="text" id="count" value = "0" readonly /> </p>
+  
+   <p><b>Price ($): </b>
+  <input type="text" id="price" value = "0"  readonly /> </p>
+
+    <p><b>Value ($): </b>
+  <input type="text" id="value" readonly /> </p> 
+ 
+ 
+ <!--Show Info button, which triggers getDetails() function  -->
+
+  <button 
+    type="button" 
+    onclick="getDetails()"
+    style="font-size:14px">
+    Show Info 
+  </button>
+  <hr> 
+ 
+
+  <script type="text/javascript">
+    "use strict";
+    
+    //==================================================
+    // roundNumber(num)
+    //==================================================
+	
+	function roundNumber(num)
+    {
+      return Math.round(num*100)/100;
+    }
+
+	 //==================================================
+    // update()
+    //==================================================
+	
+    function update()
+    {
+	 // Declare selection of radio button
+      var selection;
+      if (document.getElementById('ordered').checked)
+        selection = "ordered";
+      else if (document.getElementById('sold').checked)
+        selection = "sold";
+   
+    // Declare variable transacted count tscount, and assign it to input value
+	  var tscount= document.getElementById('tscount').value;
+	  // convert tscount from Str to Int
+	  var numtscount = parseInt(tscount);
+        // Restrict transaction to (1,100)
+		if (numtscount>100 || numtscount<1)  {
+            alert("Transaction must be between 1 and 100");
+            return false;
+        }
+
+		// Get original count and do calculation
+    var index3 = document.getElementById('mySelect').selectedIndex;
+ 
+	  var count = array[index3][1];
+	  
+	  var numcount = parseInt(count);
+	  
+	  var price = array[index3][2];
+	  
+	  var numprice =  parseFloat(price);
+	  
+	  // "ordered" adds to the inventory count
+	  if (document.getElementById('ordered').checked) {
+	  
+	  var updatecount = numcount + numtscount;
+	  
+	  var updatevalue = roundNumber(updatecount*numprice).toFixed(2);}
+	  
+	  // "sold" subtracts from the inventory count.
+	  else if (document.getElementById('sold').checked) {
+	  
+	  var updatecount = numcount - numtscount;
+	  
+	  var updatevalue = roundNumber(updatecount*numprice).toFixed(2);}
+	  
+	  
+	  document.getElementById('newcount').value = updatecount;
+	  document.getElementById('newvalue').value = updatevalue;
+	  
+    }
+    
+  </script>
+    
+
+  <!-- Field set -->
+  <fieldset>
+    <legend>Inventory Transactions</legend>
+
+    <!-- Radio buttons -->
+    <input type="radio" name="tsGroup" id="ordered"> Ordered<br>
+    <input type="radio" name="tsGroup" id="sold"> Sold<br>
+
+  </fieldset>
+  
+<!-- textbox to input transaction count -->
+  
+  <label><b>Count: </b></label>
+  <input type="text" id="tscount" >
+
+<!--Update button, which triggers update() function  -->
+  <button 
+    type="button" 
+    onclick="update()"
+    style="font-size:14px">
+    Update
+  </button>
+    
+	
+    <script type="text/javascript">
+    "use strict";
+    
+    //==================================================
+    // reset()
+    //==================================================
+	
+	
+    function reset()
+    {
+      
+// clear all input text
+    var elements = document.getElementsByTagName("input");
+for (var ii=0; ii < elements.length; ii++) {
+  if (elements[ii].type == "text") 
+    elements[ii].value = "";
+  }
+
+  // clear all radio button selection
+	  var ele = document.getElementsByName("tsGroup");
+	  for(var i=0;i<ele.length;i++)
+	  ele[i].checked = false;
+	  // clear combobox
+	  document.getElementById('mySelect').selectedIndex =0;
+    }
+    
+
+  </script>
+  
+ <!--Two read-only textboxes: New Count and New Value  -->
+  <p><b> New Count: </b>
+  <input type="text" id="newcount" readonly/> </p>
+  
+    <p><b> New Value ($): </b>
+  <input type="text" id="newvalue" readonly/> </p>
+  
+  
+  <hr>
+  
+  <!--Reset button, which triggers reset() function  -->
+ <button 
+    type="button" 
+    onclick="reset()"
+    style="font-size:14px">
+    Reset
+  </button>
+
+  <hr> 
+</body>
+</html>

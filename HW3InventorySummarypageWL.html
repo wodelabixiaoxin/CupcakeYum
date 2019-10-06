@@ -1,0 +1,195 @@
+
+
+<!DOCTYPE html>
+<html>
+<!--==================================================================
+//
+// Web site: Yum Yum Cupcake Factory 
+// Web page: Cupcake Bakers Inventory Summary page v3
+// Description:
+//   This is Inventory Summary page, which enables the staff to view an inventory summary. 
+// 
+//=================================================================-->
+<head>
+  
+	<title>Cupcake Bakers Inventory Summary page v3</title>
+	<meta charset="UTF-8">
+  <meta name="author" content="Wenting Li"/>
+  <meta name="description" content="Inventory Summary"/>
+  <meta http-equiv="Expires" content="-1">
+  
+  <link rel="stylesheet" type="text/css" href="HW2CSS.css">
+  <link rel="icon" href="cupcake.ico">
+
+  
+
+
+
+  
+</head>
+
+<body>
+
+<!-- Links to the other two pages in a menu -->
+<div class="topnav">
+  <a class="active" href="HW2main.html">Home</a> &nbsp
+  <a href="HW1page2.html">Products and Services </a> &nbsp
+  <a href="HW1page3.html">Customer Rewards Enrollment </a>
+  
+</div>
+
+<!-- use h1 for the page title -->
+<h1>Cupcake Bakers Inventory Summary page v3</h1>
+
+
+  
+  
+<script type="text/javascript">
+"use strict";
+
+
+window.onload = function loadProductData() {
+var array = [
+    ["Select product ...",0,0],
+    ["Factory's Samoa",60,4],
+	["Winter Mint",40,2.5],
+	["Party Time",51,3.5],
+	["Lemon Lust",25,3],
+	["Lemon Coconut",25,3.5],
+	["Chocolate Lovers",20,5],
+];
+
+var lsarray = localStorage.getItem("localArray");
+
+if (lsarray) {
+    array = JSON.parse(lsarray);}
+
+
+//create table using document object model (DOM) commands
+var rcount = array.length;
+document.getElementById('pcount').value = rcount-1;
+
+var table = document.createElement('table');
+
+var text3 = document.createTextNode('Product name');
+var text4 = document.createTextNode('Inventory count');
+var text5 = document.createTextNode('Unit cost($)');
+
+var th1 = document.createElement('th');
+var th2 = document.createElement('th');
+var th3 = document.createElement('th');
+th1.appendChild(text3);
+th2.appendChild(text4);
+th3.appendChild(text5);
+var tr = document.createElement('tr');
+
+tr.appendChild(th1);
+tr.appendChild(th2);
+tr.appendChild(th3);
+
+table.appendChild(tr);
+
+
+
+for (var i = 1; i < rcount; i++){
+    var tr = document.createElement('tr');   
+
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+	var td3 = document.createElement('td');
+	var c0 = array[i][0];
+	var c1 = (array[i][1]).toString();
+	var c2 = (array[i][2].toFixed(2)).toString();
+    var text1 = document.createTextNode(c0);
+    var text2 = document.createTextNode(c1);
+	var text3 = document.createTextNode(c2);
+
+    td1.appendChild(text1);
+    td2.appendChild(text2);
+	td3.appendChild(text3);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+	tr.appendChild(td3);
+
+    table.appendChild(tr);
+}
+document.body.appendChild(table);
+
+
+//loops through the array and counts the total inventory of all products and the total value of the inventory
+var tcount = 0; 
+var tvalue = 0;
+
+
+for (var i = 1; i < rcount; i++){
+    var count;
+    var value;
+    count = array[i][1];
+	value = array[i][1]*array[i][2];
+	tcount = tcount + count;
+	tvalue = tvalue + value;
+
+
+}
+
+document.getElementById('totalcount').value = tcount;
+document.getElementById('totalvalue').value = roundNumber(tvalue).toFixed(2);
+
+}
+ 
+ </script>
+  
+  
+  
+
+  
+   <script type="text/javascript">
+    "use strict";
+    
+    //==================================================
+    // roundNumber(num)
+    //==================================================
+	
+	function roundNumber(num)
+    {
+      return Math.round(num*100)/100;
+    }
+
+
+	
+  </script>
+  
+  
+  
+  
+ <!--Three read-only textboxes: Product Count, Product inventory count, and Inventory Value  -->
+  <p><b> Product Count: </b>
+  <input type="text" id="pcount" readonly/> </p>
+  
+    <p><b> Product inventory count : </b>
+  <input type="text" id="totalcount" readonly/> </p>
+  
+  
+  <hr>
+  
+  <p><b> Inventory value ($): </b>
+  <input type="text" id="totalvalue" readonly/> </p>
+  
+  
+  <hr> 
+  
+  <!--Manager button, which opens Inventory Manager page -->
+  
+  <button 
+    type="button" 
+    onclick="location.href='HW3InventoryManagerWL.html';"
+    style="font-size:20px;color: black;background-color: #FF7F50; position: absolute; left: 40%; right: 40%; bottom: 1%;">
+    Manager
+  </button>
+
+  
+  
+  
+  <hr> 
+</body>
+</html>

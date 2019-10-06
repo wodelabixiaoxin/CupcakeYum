@@ -1,0 +1,93 @@
+/*==========================================================
+
+ Web site: Yum Yum Cupcake Factory
+ CSS page: HW1CSS.css
+
+==========================================================*/ 
+
+/*==========================================================
+ Body
+==========================================================*/ 
+body
+{
+  background-color: MistyRose ;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/*==========================================================
+ Headings
+==========================================================*/ 
+h1
+{
+  
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 36px;
+  
+  color: Crimson;
+}
+
+h2
+{
+  color:DarkOrchid;
+  font-family: Georgia, serif;
+  text-align:center;
+}
+
+/*==========================================================
+ Paragraph
+==========================================================*/ 
+p
+{
+  font-size: 20px;
+}
+
+/*==========================================================
+ Input
+==========================================================*/ 
+    
+input
+{
+  background-color:PeachPuff;
+  font-size:14px;
+  padding:5px;
+  width:150px;
+}
+
+
+
+/*==========================================================
+ Class styles
+==========================================================*/ 
+.classStyle1
+{
+  color:orange;
+  font-size:32px;
+  font-weight:bold;
+}
+
+.classStyle2
+{
+  color:black;
+  font-size:11px;
+  font-weight:bold;
+  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif
+}
+
+.classStyle3
+{
+  color:black;
+  font-size:20px;
+  font-weight:bold;
+  font-family:"Times New Roman", Times, serif;
+}
+
+/*==========================================================
+ Pseudo classes
+==========================================================*/ 
+p:hover
+{
+  background-color:white;
+  font-style:italic;
+  font-weight:bolder;
+}

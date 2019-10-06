@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+
+<!--==================================================================
+//
+// Web site: Yum Yum Cupcake Factory 
+// Web page: Products and Services page
+// Description:
+//   This is Customer Rewards Enrollment page of Yum Yum Factory. 
+// 
+//=================================================================-->
+
+<head>
+  
+	<title>Customer Rewards Enrollment page </title>
+	<meta charset="UTF-8">
+  <meta name="author" content="[name]"/>
+  <meta name="description" content="[application title]"/>
+  <meta http-equiv="Expires" content="-1">
+  <link rel="stylesheet" type="text/css" href="HW1CSS.css">
+  <link rel="icon" href="cupcake.ico">
+  
+</head>
+ 
+<body>
+
+<!-- Links to the other two pages in a menu -->
+<div class="topnav">
+  <a class="active" href="HW2main.html">Home</a> &nbsp
+  <a href="HW1page2.html">Products and Services </a> &nbsp
+  <a href="HW1page3.html">Customer Rewards Enrollment </a> &nbsp
+  <a href="HW2LoginPageWL.html">Login </a> &nbsp
+  <a href="HW2LoginAdminWL.html">Create a password </a>
+  
+</div>
+
+  <!-- use h1, and h2 for the page title and explanation -->
+  <center>
+  <h1>Customer Rewards Enrollment  </h1>
+  <h2> Please Fill in the Following Information to Get Rewarded   </h2>
+  
+
+ 
+  <!--================================================================
+  // Form using Get method to get title, name, delivery format, etc
+  //===============================================================-->
+  
+  
+
+  <form 
+    method="get" 
+    enctype="application/x-www-form-urlencoded"
+    action="http://www.tipjar.com/cgi-bin/test" 
+    >
+	
+	<!-- use combo box for customer Title -->
+  <label class="classStyle3">Title: </label>
+  <select name="title_id" id="title_id">
+    <option value='Miss' >Miss</option>
+    <option value='Mr' >Mr</option>
+    <option value='Ms'  selected>Ms</option>
+  </select> 
+  <br><br>	
+	
+	<!-- use text box input for customer's name -->
+	
+    <label class="classStyle3">First name: </label>
+    <input type="text" name="txtFirstName">
+    <br><br>
+    <label class="classStyle3">Last name: </label>
+    <input type="text" name="txtLastName">
+    <br><br>
+    <br><br>
+	
+	<label class="classStyle3">Preferred coupon delivery format: </label> <br>
+    <!-- use radio button for selected delivery format, then customer and use text box to input information -->
+  <label><b><input type="radio" name="email" value="1">e-mail  <input type="text" name="txtEmail" /></b>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</label> 
+  <label ><b><input type="radio" name="snail mail" value="2">snail mail  <input type="text" name="txtSnailMail" />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</b>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​ </label> <br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+  
+
+</body>
+<!-- Horizontal ruler -->
+<hr> 
+ 
+ <!-- Footer with Snail mail address, E-mail address as a hyperlink, Phone number, and A copyright notice with current year. --> 
+ 
+ 
+<footer>
+
+<label><i>snailbox address </i>: 6061 Rochester Rd, Troy, MI 48085  </label> <br>
+<label><i>phone number </i>: (248)9811338 </label> <br>
+<label><i>email address</i>: </label>  
+<a href="mailto:liwenting0513@gmail.com">liwenting0513@gmail.com</a><br>
+<label class="classStyle2"> &copy Copyright 2018 Yum Yum Cupcake Factory. All Rights Reserved.</label>
+
+</footer>
+ 
+</html>

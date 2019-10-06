@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<!--==================================================================
+//
+// Web site: Yum Yum Cupcake Factory 
+// Web page: Login page 
+// Description:
+//   This is Login page, which enables the staff to log in the Inventory Manager page 
+// 
+//=================================================================-->
+<head>
+
+<head>
+  
+	<title>Login Page</title>
+	<meta charset="UTF-8">
+  <meta name="author" content="[name]"/>
+  <meta name="description" content="[application title]"/>
+  <meta http-equiv="Expires" content="-1">
+  
+  <link rel="stylesheet" type="text/css" href="HW2CSS.css">
+  <link rel="icon" href="cupcake.ico">
+
+
+</head>
+
+<body>
+
+<!-- Links to the other two pages in a menu -->
+<div class="topnav">
+  <a class="active" href="HW2main.html">Home</a>
+  <a href="HW1page2.html">Products and Services </a> &nbsp
+  <a href="HW1page3.html">Customer Rewards Enrollment </a> &nbsp
+  <a href="HW2LoginPageWL.html">Login </a> &nbsp
+   <a href="HW2LoginAdminWL.html">Create a password </a>
+  
+</div>
+
+<h1>Cupcake Bakers Login</h1>
+
+
+<hr>
+
+  
+  <script type="text/javascript">
+  "use strict";
+
+    //==================================================
+    // isValid()
+    //==================================================
+  
+function isValid(){
+//get password from text box input
+var pwinput = document.getElementById('passwordinput').value;
+
+//get stored password from local storage for comparison
+var lspw = localStorage.getItem("pw");
+
+//alert password cannot be blank
+if (pwinput == "")
+{alert('Password cannot be blank!')}
+
+//if password matches local storage, open inventory manager page in the same page
+
+else if (pwinput == lspw){
+
+open("HW3InventoryManagerWL.html", "_self");
+
+}
+//alert password is wrong
+
+else
+{alert('Wrong Password');}
+}
+</script>
+
+
+ <script type="text/javascript">
+  "use strict";
+    //==================================================
+    // reset()
+    //==================================================
+  
+  
+function reset(){
+
+//clear password input text box
+document.getElementById('passwordinput').value = "";
+
+}
+</script>
+
+<!-- textbox for staff to input password -->
+
+ <label><b>Passcode: </b></label>
+  <input type="password" id="passwordinput">
+
+<br><br>
+
+
+<!--Login  button, which triggers isValid() function  -->
+ <button 
+    type="button" 
+    onclick="isValid()"
+    style="font-size:14px">
+    Login 
+  </button> 
+  
+ <!--Reset  button, which triggers reset() function  -->
+   <button 
+    type="button" 
+    onclick="reset()"
+    style="font-size:14px">
+    Reset
+  </button> 
+  
+</body>
+</html>

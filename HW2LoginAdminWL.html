@@ -1,0 +1,135 @@
+
+
+<!DOCTYPE html>
+<html>
+<!--==================================================================
+//
+// Web site: Yum Yum Cupcake Factory 
+// Web page: Login Administration page
+// Description:
+//   This is Login Admin page which enables staff to set and clear a passcode. The page is accessed separately from all other pages.
+// 
+//=================================================================-->
+<head>
+  
+	<title>Login Page</title>
+	<meta charset="UTF-8">
+  <meta name="author" content="[name]"/>
+  <meta name="description" content="[application title]"/>
+  <meta http-equiv="Expires" content="-1">
+  
+  <link rel="stylesheet" type="text/css" href="HW2CSS.css">
+  <link rel="icon" href="cupcake.ico">
+
+
+
+  
+</head>
+
+<body>
+
+<!-- Links to the other two pages in a menu -->
+<div class="topnav">
+  <a class="active" href="HW2main.html">Home</a>
+  <a href="HW1page2.html">Products and Services </a> &nbsp
+  <a href="HW1page3.html">Customer Rewards Enrollment </a> &nbsp
+  <a href="HW2LoginPageWL.html">Login </a>
+  
+</div>
+
+<h1>Cupcake Bakers Login Administration</h1>
+  
+ <hr>
+  
+  
+    
+  <script type="text/javascript">
+  "use strict";
+
+    //==================================================
+    // createpasscode()
+    //==================================================
+
+function createpasscode(){
+
+var x = document.getElementById('password').value 
+
+if (x=="")  {
+            alert("Passcode cannot be empty");
+            return false;
+        }
+
+localStorage.setItem('pw', x);
+window.location.href = "HW2LoginPageWL.html";
+
+}
+
+    //==================================================
+    // checkLocalStorage()
+    //==================================================
+
+function checkLocalStorage(){
+document.getElementById('check').value = 
+        localStorage.getItem("pw");
+
+}
+
+  //==================================================
+  // clearpw()
+  //==================================================
+
+function clearpw(){
+// Remove storage fields
+      localStorage.removeItem("pw");
+	  
+//	  document.getElementById('check').value = 
+  //      localStorage.getItem("pw");
+		
+   // clear password textbox     
+		document.getElementById('password').value = "";
+
+}
+ 
+ </script>
+  
+  
+ <label><b>Passcode: </b></label>
+  <input type="password" id="password">
+
+ 
+<br><br>
+ 
+ <!--Create Passcode button, which triggers createpasscode() function  -->
+ 
+ <button 
+    type="button" 
+    onclick="createpasscode()"
+    style="font-size:14px">
+    Create Passcode 
+  </button> 
+ 
+ <!--Clear Passcode button, which triggers clearpw() function  -->
+  
+   <button 
+    type="button" 
+    onclick="clearpw()"
+    style="font-size:14px">
+    Clear Passcode
+  </button> 
+
+<br><br>
+
+<!-- 
+
+  <label><b>Check Local Storage: </b></label>
+  <input type="text" id="check" readonly />
+   <button 
+    type="button" 
+    onclick="checkLocalStorage()"
+    style="font-size:14px">
+    Check Local Storage
+  </button> 
+-->
+  
+</body>
+</html>
